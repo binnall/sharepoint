@@ -1,3 +1,13 @@
+#Intro
+ 
+# Script will take a csv file that contains urls to SharePoint sites and a csv that detials the information 
+# required to create the required SharePoint groups
+
+# Version that this script has been tested against.
+#   Version     Name
+#   -------     ----
+#   3.3.1811.0  SharePointPnPPowerShellOnline
+
 # Variable that define what sites to replicate permissions in
 $csv_SiteList = "input\sites.csv"
 $SiteListHeaders = 'Url'

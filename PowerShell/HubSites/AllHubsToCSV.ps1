@@ -1,15 +1,24 @@
+#Intro
+ 
+# Script will output each hubsite into a row in a csv file
+
+# Version that this script has been tested against.
+#   Version     Name
+#   -------     ----
+#   3.3.1811.0  SharePointPnPPowerShellOnline
+
 # Credentials for the user
 $creds = Get-Credential
 
 # O365 Admin Url
-$adminurl = "https://jeb03-admin.sharepoint.com"
+$adminurl = "https://XXX-admin.sharepoint.com"
 
 # Get date as of now inc time and secs
 $date = Get-Date
 $date = $date.ToString("yyyymmddhhss")
 
 # Path to create the file in
-$creation_path = "C:\!Jack\SharePoint\PowerShell\Hub Sites"
+$creation_path = "PowerShell\Hub Sites"
 # Create unique file name
 $file_name = $date + "AllHubSites.csv"
 
@@ -30,7 +39,8 @@ $content = $headers + $ofs
 
 New-Item -Path $creation_path -Name $file_name -ItemType File -Value $content
 
-Connect-PnPOnline -Url $adminurl -UseWebLogin
+
+Connect-PnPOnline -Url $adminurl -Credentials $creds
 
 $hubs = Get-PnPHubSite
 

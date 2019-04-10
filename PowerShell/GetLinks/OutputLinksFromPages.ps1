@@ -10,7 +10,7 @@
 
 #Site CSV
 #Each site in this list will have the script run against
-$csv_SiteList = "C:\!Jack\SharePoint\PowerShell\GetLinks\sites.csv"
+$csv_SiteList = "input\sites.csv"
 $csv_siteheaders = 'Url'
 
 #Date used in the file creation
@@ -21,7 +21,7 @@ $date = $date.ToString("yyyymmddhhss")
 $file_name = $date + 'LinkMatches.csv'
 
 #Path to create the output fil
-$creation_path = "C:\!Jack\SharePoint\PowerShell\GetLinks"
+$creation_path = ".\PowerShell\GetLinks"
 
 # The site pages list that this script will run against
 $List = "SitePages"
@@ -37,8 +37,6 @@ $delim = '|'
 
 # regex used to match the href tags that are embeded in the canvas page content
 $regex ='<a\s+(?:[^>]*?\s+)?href=(["])(.*?)\1>'
-
-
 
 # get user to enter credentials
 $creds = Get-Credential
