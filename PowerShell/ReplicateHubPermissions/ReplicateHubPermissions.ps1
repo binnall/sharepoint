@@ -1,10 +1,10 @@
 # Variable that define what sites to replicate permissions in
-$csv_SiteList = "C:\!Jack\SharePoint\PowerShell\ReplicateHubPermissions\sites.csv"
+$csv_SiteList = "input\sites.csv"
 $SiteListHeaders = 'Url'
 
 # Group Config file
 # h1 = Group Name, h2 = Group Owner
-$csv_GroupsTocreate = "C:\!Jack\SharePoint\PowerShell\ReplicateHubPermissions\groups.csv"
+$csv_GroupsTocreate = "input\groups.csv"
 $GroupToCreateHeaders = 'GroupName','GroupOwner','GroupRole','GroupMembers'
 
 # Get the credentials for the user
@@ -166,7 +166,7 @@ function AddUserToGroup{
 
 <#
 .SYNOPSIS
-Short description
+Split the users that need to be added to the group
 
 .DESCRIPTION
 Long description
@@ -197,7 +197,7 @@ foreach($site in $sites)
     $groups = GetGroups -connection $connection
     # delete the current groups on the site?
     # Groups don't have to be deleted
-    if ($var_DeleteGroups = "Yes") {
+    if ($var_DeleteGroups -eq "Yes") {
         foreach($group in $groups)
         {
             Write-Host $group.Title
