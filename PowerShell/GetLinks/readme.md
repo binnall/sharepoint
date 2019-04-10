@@ -1,4 +1,4 @@
-#h1 Scripts and Descriptions
+# Scripts and Descriptions
 
 Script Name | Description
 ---|---
