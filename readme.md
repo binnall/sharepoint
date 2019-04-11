@@ -2,4 +2,4 @@
 Selection of my PowerShell scripts that complete tasks.
 
 # Disclaimer
-These scripts are provided without any warranty and sould be used at your own risk.
+THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANT ABILITY, OR NON-INFRINGEMENT.
