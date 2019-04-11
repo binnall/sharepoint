@@ -9,12 +9,12 @@
 #   3.3.1811.0  SharePointPnPPowerShellOnline
 
 # Variable that define what sites to replicate permissions in
-$csv_SiteList = "input\sites.csv"
+$csv_SiteList = ".\input\sites.csv"
 $SiteListHeaders = 'Url'
 
 # Group Config file
-# h1 = Group Name, h2 = Group Owner
-$csv_GroupsTocreate = "input\groups.csv"
+# h1 = Group Name, h2 = Group Owner, h3 = Group Role, h4 = Group members
+$csv_GroupsTocreate = ".\input\groups.csv"
 $GroupToCreateHeaders = 'GroupName','GroupOwner','GroupRole','GroupMembers'
 
 # Get the credentials for the user
