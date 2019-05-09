@@ -8,6 +8,7 @@ $headers = 'Site','List','InternalName', 'XML'
 
 $columns = Import-Csv -Path $columns_csv_locaiton -Header $headers -Delimiter ','
 
+# itterate the csv that contains all the columns
 foreach($col in $columns)
 {
     $pnpcon = Connect-PnPOnline -url $col.Site -Credentials $creds

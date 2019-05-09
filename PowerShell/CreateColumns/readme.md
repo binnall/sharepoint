@@ -1,23 +1,26 @@
-# description
+# Description
 * PowerShell script to create site columns and associate them to a list.
 * Script uses a csv as an input file.
 * All columns are created based on the XML field definition
 
-# csv info
+# Csv info
 A csv file is used for input
 
-## csv headers
+## Csv headers
 Order of columns for csv:
 
 Site, List, InternalName, XML
 
-### csv header desription
+### Csv header desription
 site = url to create column in
+
 list = list to utilise the column created
+
 InternalName = internal name of column so it can be added to the list
+
 XML = Field XML based on the schema
 
-## examples of valid csv input
+## Examples of valid csv input
 Example of valid csv input:
 
 1) adding two text columns and 1 number column
