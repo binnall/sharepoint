@@ -4,6 +4,6 @@ This script will take the input of a csv file that contains the names of web par
 # Files Included
 
 File Name | Description
-__________|_____________
-webparts.csv|Contains the web parts and the IDs for the corresponding web parts
-sites.csv|A csv of all the sites that this script should run on 
+------------ | -------------
+webparts.csv | Contains the web parts and the IDs for the corresponding web parts
+sites.csv | A csv of all the sites that this script should run on 
