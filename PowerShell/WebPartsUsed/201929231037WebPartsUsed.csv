@@ -1,0 +1,15 @@
+Site Title,Page Title,Page Url,Conversations Yammer,Hero,Highlighted Content,Quick Links,Highlights Yammer,Image,News,Stream,Twitter,Events,Forms,People
+News,Home,/sites/News/SitePages/Home.aspx,no,yes,yes,yes,no,no,yes,yes,no,yes,no,yes
+News,architect page,/sites/News/SitePages/Templates/architect-page.aspx,no,no,no,no,no,yes,no,no,no,no,no,no
+News,conversations user,/sites/News/SitePages/conversations-user.aspx,yes,no,no,no,no,no,no,no,no,no,no,no
+News,Hero,/sites/News/SitePages/Hero.aspx,no,yes,no,no,no,no,no,no,no,no,no,no
+News,Highlighted Content,/sites/News/SitePages/Highlighted-Content.aspx,no,no,yes,no,no,no,no,no,no,no,no,no
+News,Quick Links,/sites/News/SitePages/Quick-Links.aspx,no,no,no,yes,no,no,no,no,no,no,no,no
+News,Highlights Yammer,/sites/News/SitePages/Highlights-Yammer.aspx,no,no,no,no,yes,no,no,no,no,no,no,no
+News,Image,/sites/News/SitePages/Image.aspx,no,no,no,no,no,yes,no,no,no,no,no,no
+News,News,/sites/News/SitePages/News.aspx,no,no,no,no,no,no,yes,no,no,no,no,no
+News,Stream,/sites/News/SitePages/Stream.aspx,no,no,no,no,no,no,no,yes,no,no,no,no
+News,twitter,/sites/News/SitePages/twitter.aspx,no,no,no,no,no,no,no,no,yes,no,no,no
+News,events,/sites/News/SitePages/events.aspx,no,no,no,no,no,no,no,no,no,yes,no,no
+News,forms,/sites/News/SitePages/forms.aspx,no,no,no,no,no,no,no,no,no,no,yes,no
+News,People,/sites/News/SitePages/People.aspx,no,no,no,no,no,no,no,no,no,no,no,yes
