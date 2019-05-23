@@ -6,5 +6,4 @@ This script will take the input of a csv file that contains the names of web par
 File Name | Description
 __________|_____________
 webparts.csv|Contains the web parts and the IDs for the corresponding web parts
-exampleoutput.csv|A pipe delimited output file that shows examples of what this script produces
-sites.csv|A csv of all the sites that this script should run on
+sites.csv|A csv of all the sites that this script should run on 

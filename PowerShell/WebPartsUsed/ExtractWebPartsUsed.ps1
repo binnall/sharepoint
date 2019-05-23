@@ -49,26 +49,9 @@ $csv_outputheader = $headers + $ofs
 #complete file path
 $csv_path = $creation_path + '/' + $file_name
 
-# create output csv
-New-Item -Path $creation_path -Name $file_name -ItemType File -Value $csv_outputheader
-
-# create an object that will store the 
-function CreateWebPartIDObj {
-    [system.collections.ArrayList]$webpartArray = @()
-    foreach($webpart in $webparts){
-        $webpartobjprop = @{
-            Title = $webpart.title            
-            ID = $webpart.id
-        }
-        $obj = New-Object -typeName psobject -Property $webpartobjprop
-        $webpartArray.Add($obj) | Out-Null
-    }
-    return $webpartArray
-}
-
 # Create an object that will be used to store if a match has been found for the web parts being checked for 
 function CreateMatchObj{
-    $def = "no"
+    $def = "no" # default value set here. This could be updated to a bool if required 
     $wpOuput = @{
         ConversationsYammer = $def
         Hero = $def
@@ -88,8 +71,8 @@ function CreateMatchObj{
 
 function OutputToCSV
 {
-    $pnpsite = Get-PnPWeb -Connection $connection
-    $site_title = $pnpsite.Title
+    $pnpsite = Get-PnPWeb -Connection $connection # get the web object
+    $site_title = $pnpsite.Title # set the title as this is used in the outout file
     $pages = (Get-PnPListItem -List $List -Fields "CanvasContent1", "Title" -Connection $connection).FieldValues
 
     # itterate around each page in the stie to get the information from each page that will be used to build up the row and also conduct
@@ -103,9 +86,12 @@ function OutputToCSV
         # check if the canvas has content 
         if ($canvascontent.Length -gt 0) 
         {
+            # itterate around each webpart in the input file. If the ID is found 
+            # in the canvas content for the current page then break into the swtich and update the default result to yes
             foreach($wp in $webparts){
-                if($canvascontent -match $wp.ID){
-                    switch ($wp.Title) {
+                if($canvascontent -match $wp.ID) # when ID is located in the canvas content field it will return true
+                {
+                    switch ($wp.Title) { # this will switch on the title of the webpart that the ID has matched on
                         "Conversations Yammer" {$matchObj.ConversationsYammer = $matchResult; break}
                         "Hero" {$matchObj.Hero = $matchResult; break}
                         "Highlighted Content" {$matchObj.HighlightedContent = $matchResult; break}
@@ -135,16 +121,17 @@ function OutputToCSV
 # itterate around each site from the csv
 foreach($site in $sites)
 {
-    # make the connection, get ome site information and create object that contains all the site pages
+    # make the connection, and call the function to create the csv
     try
     {
+        # create output csv
+        New-Item -Path $creation_path -Name $file_name -ItemType File -Value $csv_outputheader -ErrorAction Stop
         $connection = Connect-PnPOnline -Url $site.Url -UseWebLogin -ErrorAction Stop
         OutputToCSV
     }
-    catch
+    catch # should catch an error if a connection to the site can't be made
     {
         Write-Host $_.Exception.Message
     }
     Disconnect-PnPOnline -Connection $connection
 }
-
