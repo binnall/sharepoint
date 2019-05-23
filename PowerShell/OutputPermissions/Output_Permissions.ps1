@@ -1,12 +1,12 @@
 #sites
-$csv_SiteList = "C:\!Jack\SharePoint\PowerShell\ReplicateHubPermissions\sites.csv"
+$csv_SiteList = ".\sites.csv"
 $csv_siteheaders = 'Url'
 
 #Store credentials
 $creds = Get-Credential
 
 # Path to create file in
-$creation_path = "C:\!Jack\SharePoint\PowerShell\ReplicateHubPermissions"
+$creation_path = ".\ReplicateHubPermissions"
 $date = Get-Date
 $date = $date.ToString("yyyymmddhhss")
 
