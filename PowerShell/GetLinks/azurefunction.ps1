@@ -3,22 +3,16 @@
 # Script will take a csv file that contains url to SharePoint sites and analyse the site pages to see if any of the pages have hyperlinks.
 # For every hyperlink in a page this gets output to a row in a csv that is delimited by a pipe
 
-# Version that this script has been tested against.
-#   Version     Name
-#   -------     ----
-#   3.3.1811.0  SharePointPnPPowerShellOnline
+# will get the variables / credentials in the azure automation service
+$itsite = Get-AutomationVariable -Name 'ITSite'
+$cred = Get-AutomationPSCredential -Name 'admin'
+$regex = Get-AutomationVariable -Name 'regex'
 
-# The site pages list that this script will run against
-$List = "SitePages"
+$list = "SitePages"
 
-$cred = Get-Credential
+#connection for Internal IT site that contains a list of sites to run the script against
 
-# regex used to match the href tags that are embeded in the canvas page content
-$regex ='<a\s+(?:[^>]*?\s+)?href=(["])(.*?)\1>'
-
-#connection for Internal IT site
-
-$internalITCon = Connect-PnPOnline -Url "https://m365x630080.sharepoint.com/sites/InternalIT/" -Credentials $cred
+$internalITCon = Connect-PnPOnline -Url $itsite -Credentials $cred
 # create object of all the sites
 $sitesObj = (Get-PnPListItem -List 'sitesAutomation' -Fields "url" -Connection $internalITCon)
 
@@ -27,10 +21,10 @@ foreach($siteUrl in $sitesObj)
 {
     Write-Host $siteUrl["url"]
     # make the connection, get ome site information and create object that contains all the site pages
-    $connection = Connect-PnPOnline -Url $siteUrl["url"] -UseWebLogin
+    $connection = Connect-PnPOnline -Url $siteUrl["url"] -Credentials $cred
     $pnpsite = Get-PnPWeb -Connection $connection
     $site_title = $pnpsite.Title
-    $pages = (Get-PnPListItem -List $List -Fields "CanvasContent1", "Title" -Connection $connection).FieldValues
+    $pages = (Get-PnPListItem -List $list -Fields "CanvasContent1", "Title" -Connection $connection).FieldValues
 
     # itterate around each page in the stie to get the information from each page that will be used to build up the row and also conduct
     # the check to see if the canvas content has any href tags embeded
