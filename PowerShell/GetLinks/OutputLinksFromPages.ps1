@@ -49,7 +49,7 @@ foreach($siteUrl in $sitesObj)
             foreach($hrefmatch in $hrefmatches)
             {
                 $internalITCon2 = Connect-PnPOnline -Url "https://m365x630080.sharepoint.com/sites/InternalIT/" -Credentials $cred
-                Add-PnPListItem -List "Migration Hyperlink Progress" -Values @{"Title" = "N/A"; "SiteTitle" = $site_title;"PageTitle" = $page_title; "Ref" = $fileref; "Match" = $hrefmatch} -Connection $internalITCon2
+                $rtrnObj = Add-PnPListItem -List "Migration Hyperlink Progress" -Values @{"Title" = "N/A"; "SiteTitle" = $site_title;"PageTitle" = $page_title; "Ref" = $fileref; "Match" = $hrefmatch} -Connection $internalITCon2
             }
         }
     }
