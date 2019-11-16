@@ -19,7 +19,7 @@ $sitesObj = (Get-PnPListItem -List 'sitesAutomation' -Fields "url" -Connection $
 # itterate around each site from the csv
 foreach($siteUrl in $sitesObj)
 {
-    Write-output $siteUrl["url"]
+    Write-error $siteUrl["url"]
     # make the connection, get ome site information and create object that contains all the site pages
     $connection = Connect-PnPOnline -Url $siteUrl["url"] -Credentials $cred
     $pnpsite = Get-PnPWeb -Connection $connection
@@ -47,5 +47,5 @@ foreach($siteUrl in $sitesObj)
             }
         }
     }
-    Disconnect-PnPOnline -Connection $connection
+    $donotuse2 = Disconnect-PnPOnline -Connection $connection
 }

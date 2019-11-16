@@ -10,7 +10,7 @@
 
 # The site pages list that this script will run against
 $List = "SitePages"
-
+$ITSite = "https://m365x630080.sharepoint.com/sites/InternalIT"
 $cred = Get-Credential
 
 # regex used to match the href tags that are embeded in the canvas page content
@@ -18,7 +18,7 @@ $regex ='<a\s+(?:[^>]*?\s+)?href=(["])(.*?)\1>'
 
 #connection for Internal IT site
 
-$internalITCon = Connect-PnPOnline -Url "https://m365x630080.sharepoint.com/sites/InternalIT/" -Credentials $cred
+$internalITCon = Connect-PnPOnline -Url $ITSite -Credentials $cred
 # create object of all the sites
 $sitesObj = (Get-PnPListItem -List 'sitesAutomation' -Fields "url" -Connection $internalITCon)
 
@@ -48,7 +48,7 @@ foreach($siteUrl in $sitesObj)
             # itterate around each regular expression match and write it out into the output csv that is pipe delimited 
             foreach($hrefmatch in $hrefmatches)
             {
-                $internalITCon2 = Connect-PnPOnline -Url "https://m365x630080.sharepoint.com/sites/InternalIT/" -Credentials $cred
+                $internalITCon2 = Connect-PnPOnline -Url $ITSite -Credentials $cred
                 Add-PnPListItem -List "Migration Hyperlink Progress" -Values @{"Title" = "N/A"; "SiteTitle" = $site_title;"PageTitle" = $page_title; "Ref" = $fileref; "Match" = $hrefmatch} -Connection $internalITCon2
             }
         }
